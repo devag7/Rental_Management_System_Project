@@ -1,24 +1,18 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Register from './components/Register';
-import Login from './components/Login';
-import Dashboard from './components/Dashboard';
-import PropertyList from './components/PropertyList';
+import Home from './pages/Home';
+import AddProperty from './pages/AddProperty';
+import Dashboard from './pages/Dashboard';
 
-function App() {
-  const user = JSON.parse(localStorage.getItem('user'));
-
+export default function App() {
   return (
-      <div className="min-h-screen bg-gray-100">
-        <Navbar user={user} />
+    <Router>
+      <div className="min-h-screen bg-gray-50">
         <Routes>
-          <Route path="/" element={<PropertyList />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/add-property" element={<AddProperty />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
+    </Router>
   );
 }
-
-export default App;
